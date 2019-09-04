@@ -3,27 +3,31 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A2632A21F0653FDE4645533 /* Pods_Eye_Message.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B68E3D4BFA648974D37E14 /* Pods_Eye_Message.framework */; };
 		EA582677231EA8CF00F8CC03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA582676231EA8CF00F8CC03 /* AppDelegate.swift */; };
-		EA582679231EA8CF00F8CC03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA582678231EA8CF00F8CC03 /* ViewController.swift */; };
-		EA58267C231EA8CF00F8CC03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA58267A231EA8CF00F8CC03 /* Main.storyboard */; };
+		EA582679231EA8CF00F8CC03 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA582678231EA8CF00F8CC03 /* MessagesViewController.swift */; };
 		EA58267F231EA8CF00F8CC03 /* Eye_Message.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA58267D231EA8CF00F8CC03 /* Eye_Message.xcdatamodeld */; };
 		EA582681231EA8D000F8CC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA582680231EA8D000F8CC03 /* Assets.xcassets */; };
 		EA582684231EA8D000F8CC03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA582682231EA8D000F8CC03 /* LaunchScreen.storyboard */; };
+		EA58268C231EADBF00F8CC03 /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA58268B231EADBF00F8CC03 /* MessagesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E8799606784C2013DDAEA1D /* Pods-Eye Message.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eye Message.release.xcconfig"; path = "Target Support Files/Pods-Eye Message/Pods-Eye Message.release.xcconfig"; sourceTree = "<group>"; };
+		C8B68E3D4BFA648974D37E14 /* Pods_Eye_Message.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eye_Message.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA582673231EA8CF00F8CC03 /* Eye Message.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eye Message.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA582676231EA8CF00F8CC03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA582678231EA8CF00F8CC03 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EA58267B231EA8CF00F8CC03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EA582678231EA8CF00F8CC03 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		EA58267E231EA8CF00F8CC03 /* Eye_Message.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eye_Message.xcdatamodel; sourceTree = "<group>"; };
 		EA582680231EA8D000F8CC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA582683231EA8D000F8CC03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA582685231EA8D000F8CC03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA58268B231EADBF00F8CC03 /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
+		F1A814BDFFFE3E70F44BDA09 /* Pods-Eye Message.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eye Message.debug.xcconfig"; path = "Target Support Files/Pods-Eye Message/Pods-Eye Message.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A2632A21F0653FDE4645533 /* Pods_Eye_Message.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E4F06EC83E1771D57742554A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1A814BDFFFE3E70F44BDA09 /* Pods-Eye Message.debug.xcconfig */,
+				0E8799606784C2013DDAEA1D /* Pods-Eye Message.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EA58266A231EA8CF00F8CC03 = {
 			isa = PBXGroup;
 			children = (
 				EA582675231EA8CF00F8CC03 /* Eye Message */,
 				EA582674231EA8CF00F8CC03 /* Products */,
+				E4F06EC83E1771D57742554A /* Pods */,
+				EF1E06873C99BC808786B3B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +73,22 @@
 			isa = PBXGroup;
 			children = (
 				EA582676231EA8CF00F8CC03 /* AppDelegate.swift */,
-				EA582678231EA8CF00F8CC03 /* ViewController.swift */,
-				EA58267A231EA8CF00F8CC03 /* Main.storyboard */,
+				EA582678231EA8CF00F8CC03 /* MessagesViewController.swift */,
+				EA58268B231EADBF00F8CC03 /* MessagesTableViewCell.swift */,
 				EA582680231EA8D000F8CC03 /* Assets.xcassets */,
 				EA582682231EA8D000F8CC03 /* LaunchScreen.storyboard */,
 				EA582685231EA8D000F8CC03 /* Info.plist */,
 				EA58267D231EA8CF00F8CC03 /* Eye_Message.xcdatamodeld */,
 			);
 			path = "Eye Message";
+			sourceTree = "<group>";
+		};
+		EF1E06873C99BC808786B3B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8B68E3D4BFA648974D37E14 /* Pods_Eye_Message.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA582688231EA8D000F8CC03 /* Build configuration list for PBXNativeTarget "Eye Message" */;
 			buildPhases = (
+				F8086988365FD050608599ED /* [CP] Check Pods Manifest.lock */,
 				EA58266F231EA8CF00F8CC03 /* Sources */,
 				EA582670231EA8CF00F8CC03 /* Frameworks */,
 				EA582671231EA8CF00F8CC03 /* Resources */,
+				373DB037AF4F8259A894DCB5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,18 +153,60 @@
 			files = (
 				EA582684231EA8D000F8CC03 /* LaunchScreen.storyboard in Resources */,
 				EA582681231EA8D000F8CC03 /* Assets.xcassets in Resources */,
-				EA58267C231EA8CF00F8CC03 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		373DB037AF4F8259A894DCB5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eye Message/Pods-Eye Message-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eye Message/Pods-Eye Message-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eye Message/Pods-Eye Message-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8086988365FD050608599ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Eye Message-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EA58266F231EA8CF00F8CC03 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA582679231EA8CF00F8CC03 /* ViewController.swift in Sources */,
+				EA582679231EA8CF00F8CC03 /* MessagesViewController.swift in Sources */,
+				EA58268C231EADBF00F8CC03 /* MessagesTableViewCell.swift in Sources */,
 				EA582677231EA8CF00F8CC03 /* AppDelegate.swift in Sources */,
 				EA58267F231EA8CF00F8CC03 /* Eye_Message.xcdatamodeld in Sources */,
 			);
@@ -147,14 +215,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EA58267A231EA8CF00F8CC03 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA58267B231EA8CF00F8CC03 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EA582682231EA8D000F8CC03 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,6 +344,7 @@
 		};
 		EA582689231EA8D000F8CC03 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1A814BDFFFE3E70F44BDA09 /* Pods-Eye Message.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +363,7 @@
 		};
 		EA58268A231EA8D000F8CC03 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E8799606784C2013DDAEA1D /* Pods-Eye Message.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
