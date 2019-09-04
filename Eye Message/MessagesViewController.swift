@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftSoup
 struct ChatMessgaes {
     var isIncoming:Bool?
     var messgae:String?
@@ -16,6 +16,7 @@ struct ChatMessgaes {
 class MessagesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     lazy var tableView:UITableView = {
         let tv = UITableView()
+        tv.backgroundColor = UIColor(white: 0.95, alpha: 1)
         tv.scrollsToTop = false
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
@@ -27,9 +28,9 @@ class MessagesViewController: UIViewController,UITableViewDelegate,UITableViewDa
         tf.layer.cornerRadius = 12
         tf.layer.borderColor = UIColor.gray.cgColor
         tf.layer.borderWidth = 2
+        tf.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
         tf.tintColor = UIColor.blue
         tf.contentVerticalAlignment = .center
-        //tf.textAlignment = .left
         tf.backgroundColor = UIColor(white: 0.95, alpha: 1)
         tf.layer.masksToBounds = true
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +68,6 @@ class MessagesViewController: UIViewController,UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Eye Message"
-        tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         indexForCell = messages.count - 1
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -82,6 +82,70 @@ class MessagesViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
     }
     
+    private func fetchFirstQuestionURL(_ query: String)->String{
+        var QuestionLink = ""
+        
+        let myURLString = "https://stackoverflow.com/search?q=\(query)"
+        guard let myURL = URL(string: myURLString) else {
+            print("Error: \(myURLString) doesn't seem to be a valid URL")
+            return "Error: \(myURLString) doesn't seem to be a valid URL"
+        }
+        
+        do {
+            let myHTMLString = try String(contentsOf: myURL, encoding: .ascii)
+            //print("HTML : \(myHTMLString)")
+            let doc:Document = try SwiftSoup.parse(myHTMLString)
+            //post-layout
+            let link: Element? = doc.body()
+            let cl = try link?.getElementsByClass("summary").first()
+            let answerLink: Element? = try cl?.getElementsByClass("result-link").first()
+            let getLink:Element? = try answerLink?.getElementsByTag("h3").first()
+            let linkz: Element = try getLink!.select("a").first()!
+            let linkHref: String = try linkz.attr("href"); // "http://example.com/"
+            
+            
+            
+            messages.append(ChatMessgaes(isIncoming: false, messgae: linkHref))
+            indexForCell += 1
+            QuestionLink = "https://stackoverflow.com"+linkHref
+            
+            
+                guard let myURL2 = URL(string: QuestionLink) else {
+                print("Error: \(QuestionLink) doesn't seem to be a valid URL")
+                return ("Error: \(QuestionLink) doesn't seem to be a valid URL")
+            }
+            
+            do {
+                let myHTMLString2 = try String(contentsOf: myURL2, encoding: .ascii)
+                //print("HTML : \(myHTMLString2)")
+                let doc2:Document = try SwiftSoup.parse(myHTMLString2)
+                //post-layout
+                let link2: Element? = doc2.body()
+                
+                
+                let getAnswer = try link2?.getElementsByClass("answer accepted-answer").first()
+                
+                
+                let cleanAnswer = try getAnswer?.getElementsByClass("answercell")
+                print(try cleanAnswer?.text())
+                messages.append(ChatMessgaes(isIncoming: false, messgae: try cleanAnswer?.text()))
+                indexForCell += 1
+                
+            } catch let error2 {
+                print("Error: \(error2)")
+            }
+            
+            
+            
+           // let text = try cl?.text()
+            //print(link?.firstElementSibling())
+        } catch let error {
+            print("Error: \(error)")
+        }
+        
+        return QuestionLink
+    }
+    
     @objc func sendButtonPressed(_ sender:UIButton){
         if (inputMessageTextFiled.text?.isEmpty)! {
             
@@ -90,8 +154,11 @@ class MessagesViewController: UIViewController,UITableViewDelegate,UITableViewDa
             messages.append(ChatMessgaes(isIncoming: true, messgae: inputMessageTextFiled.text))
             indexForCell += 1
             tableView.scrollToRow(at: IndexPath(row: indexForCell, section: 0), at: .bottom, animated: true)
+            scrollToBottom()
             
+            fetchFirstQuestionURL(inputMessageTextFiled.text!.replacingOccurrences(of: " ", with: "+"))
             inputMessageTextFiled.text = ""
+
         }
     }
     
