@@ -126,8 +126,9 @@ class MessagesViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 let getAnswer = try link2?.getElementsByClass("answer accepted-answer").first()
                 
                 
-                let cleanAnswer = try getAnswer?.getElementsByClass("answercell")
-                print(try cleanAnswer?.text())
+                let cleanAnswer = try getAnswer?.getElementsByClass("post-text")
+                print(cleanAnswer?.array())
+                
                 messages.append(ChatMessgaes(isIncoming: false, messgae: try cleanAnswer?.text()))
                 indexForCell += 1
                 
