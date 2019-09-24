@@ -100,8 +100,8 @@ class MessagesViewController: UIViewController,UITableViewDelegate,UITableViewDa
             let cl = try link?.getElementsByClass("summary").first()
             let answerLink: Element? = try cl?.getElementsByClass("result-link").first()
             let getLink:Element? = try answerLink?.getElementsByTag("h3").first()
-            let linkz: Element = try getLink!.select("a").first()!
-            let linkHref: String = try linkz.attr("href"); // "http://example.com/"
+            let linkz: Element? = try getLink?.select("a").first()
+            let linkHref: String = try linkz?.attr("href") ?? "http://example.com/"
             
             
             
@@ -127,7 +127,6 @@ class MessagesViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 
                 
                 let cleanAnswer = try getAnswer?.getElementsByClass("post-text")
-                print(cleanAnswer?.array())
                 
                 messages.append(ChatMessgaes(isIncoming: false, messgae: try cleanAnswer?.text()))
                 indexForCell += 1
@@ -157,7 +156,22 @@ class MessagesViewController: UIViewController,UITableViewDelegate,UITableViewDa
             tableView.scrollToRow(at: IndexPath(row: indexForCell, section: 0), at: .bottom, animated: true)
             scrollToBottom()
             
-            fetchFirstQuestionURL(inputMessageTextFiled.text!.replacingOccurrences(of: " ", with: "+"))
+           
+            let operation1 = BlockOperation{
+                
+                let group = DispatchGroup()
+                group.enter()
+                     let _ = self.fetchFirstQuestionURL(self.inputMessageTextFiled.text!.replacingOccurrences(of: " ", with: "+"))
+                group.leave()
+                
+
+            }
+            let operation2 = BlockOperation {
+                print("haaani")
+
+            }
+            operation2.addDependency(operation1)
+
             inputMessageTextFiled.text = ""
 
         }
